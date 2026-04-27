@@ -1,0 +1,1661 @@
+<!DOCTYPE html>
+<html lang="nb">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VisitOSLO · Media Omtale</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Outfit:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --vo-green: #2C622C;
+      --vo-green-deep: #234923;
+      --vo-black: #000000;
+      --vo-text: #222222;
+      --vo-muted: #555555;
+      --vo-subtle: #898989;
+      --vo-bg: #FFFFFF;
+      --vo-soft: #F6F6F6;
+      --vo-border: #E5E5E5;
+      --vo-border-strong: #C9C9C9;
+
+      --vo-peach: #FCE2CF;
+      --vo-mint:  #CCEDEA;
+      --vo-pink:  #F2D1E1;
+      --vo-sky:   #CEE6ED;
+      --vo-warm-yellow: #F5E6BF;
+
+      --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+      --shadow:    0 4px 16px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 16px 40px rgba(0, 0, 0, 0.10);
+    }
+
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+      font-family: 'Outfit', Arial, Helvetica, sans-serif;
+      font-size: 15px;
+      line-height: 1.5;
+      color: var(--vo-text);
+      background: var(--vo-bg);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+    a { color: inherit; text-decoration: none; }
+    button { font-family: inherit; cursor: pointer; }
+    input, textarea, select { font-family: inherit; font-size: inherit; color: inherit; }
+
+    /* Header */
+    .header {
+      position: sticky; top: 0; z-index: 30;
+      background: var(--vo-bg);
+      border-bottom: 1px solid var(--vo-border);
+    }
+    .header-inner {
+      max-width: 1280px; margin: 0 auto;
+      padding: 18px 28px;
+      display: flex; align-items: center; gap: 28px;
+    }
+    .brand-link { display: flex; align-items: center; gap: 18px; cursor: pointer; }
+    .brand-logo { width: 84px; height: 56px; flex-shrink: 0; }
+    .brand-divider { width: 1px; height: 30px; background: var(--vo-border); }
+    .brand-app {
+      font-family: 'Fraunces', Georgia, serif;
+      font-style: italic;
+      font-weight: 400;
+      font-size: 22px;
+      color: var(--vo-black);
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+
+    .nav { display: flex; gap: 4px; margin-left: 12px; }
+    .nav a {
+      padding: 10px 16px;
+      font-size: 14.5px;
+      font-weight: 500;
+      color: var(--vo-text);
+      cursor: pointer;
+      border-bottom: 2px solid transparent;
+      margin-bottom: -2px;
+      transition: color 0.15s, border-color 0.15s;
+    }
+    .nav a:hover { color: var(--vo-black); }
+    .nav a.active {
+      color: var(--vo-black);
+      border-bottom-color: var(--vo-green);
+      font-weight: 600;
+    }
+
+    .header-spacer { flex: 1; }
+
+    .test-toggle {
+      display: flex; align-items: center; gap: 10px;
+      padding: 8px 14px;
+      border: 1px solid var(--vo-border);
+      background: var(--vo-bg);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--vo-muted);
+      transition: all 0.15s;
+    }
+    .test-toggle.is-on {
+      background: var(--vo-warm-yellow);
+      border-color: #E0CB8A;
+      color: var(--vo-black);
+    }
+    .switch {
+      position: relative; width: 30px; height: 18px;
+      background: #CCC; transition: background 0.15s;
+    }
+    .test-toggle.is-on .switch { background: var(--vo-green); }
+    .switch::after {
+      content: ''; position: absolute; top: 2px; left: 2px;
+      width: 14px; height: 14px;
+      background: white;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+      transition: transform 0.15s;
+    }
+    .test-toggle.is-on .switch::after { transform: translateX(12px); }
+
+    .test-banner {
+      background: var(--vo-warm-yellow);
+      border-bottom: 1px solid #E0CB8A;
+      color: var(--vo-black);
+      font-size: 13.5px;
+      padding: 10px 28px;
+      text-align: center;
+    }
+    .test-banner b { font-weight: 600; }
+    .test-banner-link {
+      background: none; border: none; padding: 0;
+      color: var(--vo-green); text-decoration: underline;
+      font-weight: 600; font-family: inherit; font-size: inherit; cursor: pointer;
+    }
+
+    .main { max-width: 1280px; margin: 0 auto; padding: 40px 28px 80px; }
+
+    /* Page head */
+    .page-head {
+      display: flex; align-items: end; justify-content: space-between;
+      margin-bottom: 32px; gap: 24px;
+    }
+    .page-title {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 56px; font-weight: 500;
+      color: var(--vo-black);
+      letter-spacing: -0.02em;
+      margin: 0 0 6px;
+      line-height: 1.05;
+    }
+    .page-title em { font-style: italic; font-weight: 400; color: var(--vo-green); }
+    .page-subtitle { color: var(--vo-muted); font-size: 15px; margin: 0; }
+
+    /* Toolbar */
+    .toolbar {
+      background: var(--vo-soft);
+      padding: 16px;
+      margin-bottom: 24px;
+      display: flex; gap: 10px; flex-wrap: wrap; align-items: center;
+    }
+    .toolbar-grow { flex: 1; min-width: 220px; }
+
+    .input, .select {
+      width: 100%;
+      padding: 11px 14px;
+      border: 1px solid var(--vo-border-strong);
+      background: var(--vo-bg);
+      transition: border 0.12s, box-shadow 0.12s;
+      outline: none;
+      font-size: 14.5px;
+      color: var(--vo-text);
+    }
+    .input:focus, .select:focus {
+      border-color: var(--vo-green);
+      box-shadow: 0 0 0 3px rgba(44, 98, 44, 0.12);
+    }
+    .input.search {
+      padding-left: 40px;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23555' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><circle cx='11' cy='11' r='7'/><path d='m21 21-4.3-4.3'/></svg>");
+      background-repeat: no-repeat; background-position: 14px center;
+    }
+    .select {
+      appearance: none;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23555' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'><path d='m6 9 6 6 6-6'/></svg>");
+      background-repeat: no-repeat; background-position: right 14px center;
+      padding-right: 36px;
+    }
+
+    .label {
+      display: block;
+      font-size: 11.5px; font-weight: 600;
+      color: var(--vo-muted);
+      margin-bottom: 8px;
+      letter-spacing: 0.06em; text-transform: uppercase;
+    }
+    .label .req { color: var(--vo-green); margin-left: 2px; font-weight: 700; }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 22px;
+      border: 1px solid transparent;
+      font-weight: 600; font-size: 14px;
+      transition: all 0.15s;
+      white-space: nowrap; font-family: inherit;
+      letter-spacing: 0.01em;
+    }
+    .btn-primary { background: var(--vo-black); color: white; }
+    .btn-primary:hover { background: #333; }
+    .btn-cta { background: var(--vo-green); color: white; }
+    .btn-cta:hover { background: var(--vo-green-deep); }
+    .btn-cta:disabled { background: #BBB; cursor: not-allowed; }
+    .btn-ghost {
+      background: transparent; color: var(--vo-black);
+      border-color: var(--vo-border-strong);
+    }
+    .btn-ghost:hover { background: var(--vo-soft); border-color: var(--vo-black); }
+    .btn-icon {
+      padding: 9px; background: transparent;
+      border: 1px solid transparent; color: var(--vo-muted);
+    }
+    .btn-icon:hover { background: var(--vo-soft); color: var(--vo-black); }
+    .btn-danger {
+      background: transparent; color: #B33A2A;
+      border: 1px solid #E8C5BF;
+    }
+    .btn-danger:hover { background: #FBEEEC; border-color: #B33A2A; }
+
+    /* Table */
+    .table-wrap {
+      background: var(--vo-bg);
+      border: 1px solid var(--vo-border);
+      overflow: hidden;
+    }
+    table { width: 100%; border-collapse: collapse; }
+    th {
+      text-align: left; font-weight: 600;
+      font-size: 11.5px; letter-spacing: 0.08em;
+      text-transform: uppercase; color: var(--vo-muted);
+      padding: 14px 18px;
+      background: var(--vo-soft);
+      border-bottom: 1px solid var(--vo-border);
+    }
+    td {
+      padding: 18px;
+      border-bottom: 1px solid var(--vo-border);
+      vertical-align: middle;
+    }
+    tbody tr.clickable { cursor: pointer; transition: background 0.12s; }
+    tbody tr.clickable:hover { background: var(--vo-soft); }
+    tbody tr:last-child td { border-bottom: none; }
+
+    .cell-date {
+      font-family: 'DM Mono', monospace;
+      font-size: 12.5px; color: var(--vo-muted);
+      white-space: nowrap;
+    }
+    .cell-title {
+      font-family: 'Fraunces', Georgia, serif;
+      font-weight: 500; font-size: 18px;
+      color: var(--vo-black);
+      max-width: 420px;
+      overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+      letter-spacing: -0.01em;
+    }
+    .cell-author { color: var(--vo-muted); font-size: 14px; }
+    .cell-author a { color: var(--vo-green); font-weight: 500; cursor: pointer; }
+    .cell-author a:hover { color: var(--vo-green-deep); text-decoration: underline; }
+    .cell-source { color: var(--vo-muted); font-size: 14px; font-style: italic; }
+
+    .chip {
+      display: inline-flex; align-items: center;
+      padding: 4px 11px;
+      font-size: 11.5px; font-weight: 600;
+      color: var(--vo-black);
+      white-space: nowrap; letter-spacing: 0.02em;
+      background: var(--vo-soft);
+    }
+    .chip[data-cat="Reisereportasje"]      { background: var(--vo-peach); }
+    .chip[data-cat="Anmeldelse"]           { background: var(--vo-pink); }
+    .chip[data-cat="Nyhetsartikkel"]       { background: var(--vo-sky); }
+    .chip[data-cat="Intervju"]             { background: var(--vo-mint); }
+    .chip[data-cat="Blogg / Influenser"]   { background: var(--vo-pink); }
+    .chip[data-cat="TV / Radio"]           { background: var(--vo-warm-yellow); }
+    .chip[data-cat="Podkast"]              { background: var(--vo-warm-yellow); }
+    .chip[data-cat="Sosiale medier"]       { background: var(--vo-mint); }
+    .chip[data-cat="Bransje / Fagpresse"]  { background: var(--vo-sky); }
+    .chip[data-cat="Pressemelding-dekning"]{ background: var(--vo-peach); }
+
+    .chip-count {
+      display: inline-flex; align-items: center; gap: 5px;
+      padding: 4px 11px;
+      font-size: 12.5px; font-weight: 600;
+      background: var(--vo-soft); color: var(--vo-text);
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* Empty state */
+    .empty { padding: 96px 24px; text-align: center; background: var(--vo-bg); }
+    .empty-icon {
+      width: 80px; height: 80px;
+      margin: 0 auto 24px;
+      background: var(--vo-mint);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--vo-green);
+    }
+    .empty h3 {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 32px; font-weight: 500;
+      letter-spacing: -0.02em;
+      margin: 0 0 10px;
+      color: var(--vo-black);
+    }
+    .empty p { color: var(--vo-muted); margin: 0 0 28px; font-size: 16px; }
+
+    /* Form */
+    .form-head { display: flex; align-items: center; gap: 14px; margin-bottom: 32px; }
+    .form-grid {
+      display: grid; grid-template-columns: 1fr 1.2fr;
+      gap: 24px; align-items: start;
+    }
+    @media (max-width: 880px) { .form-grid { grid-template-columns: 1fr; } }
+
+    .card {
+      background: var(--vo-bg);
+      border: 1px solid var(--vo-border);
+      padding: 28px;
+    }
+    .card + .card { margin-top: 16px; }
+    .card h3 {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 24px; font-weight: 500;
+      color: var(--vo-black);
+      margin: 0 0 22px;
+      letter-spacing: -0.02em;
+    }
+    .card h3 em { font-style: italic; font-weight: 400; color: var(--vo-green); }
+
+    .field { margin-bottom: 18px; }
+    .field:last-child { margin-bottom: 0; }
+    textarea.input { resize: vertical; min-height: 96px; line-height: 1.55; }
+
+    .picker { position: relative; }
+    .picker-results {
+      position: absolute; top: calc(100% + 4px); left: 0; right: 0;
+      background: var(--vo-bg);
+      border: 1px solid var(--vo-border-strong);
+      box-shadow: var(--shadow-lg);
+      max-height: 260px; overflow-y: auto;
+      z-index: 10;
+    }
+    .picker-row {
+      padding: 11px 14px; cursor: pointer;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 10px;
+      border-bottom: 1px solid var(--vo-border);
+    }
+    .picker-row:last-child { border-bottom: none; }
+    .picker-row:hover, .picker-row.is-active { background: var(--vo-soft); }
+    .picker-row .name { font-weight: 500; color: var(--vo-black); }
+    .picker-row .meta { color: var(--vo-subtle); font-size: 12.5px; font-style: italic; }
+    .picker-row.is-selected { opacity: 0.4; cursor: default; }
+
+    .author-selected {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 12px 14px 12px 18px;
+      background: var(--vo-mint);
+      border-left: 3px solid var(--vo-green);
+    }
+    .author-selected .name { font-weight: 600; color: var(--vo-black); }
+    .author-selected .meta { color: var(--vo-green-deep); font-size: 13px; font-style: italic; }
+
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
+    .member-chip {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 8px 6px 14px;
+      background: var(--vo-sky);
+      color: var(--vo-black);
+      font-size: 13px; font-weight: 500;
+    }
+    .member-chip a { cursor: pointer; }
+    .member-chip a:hover { text-decoration: underline; }
+    .member-chip button {
+      background: var(--vo-black); border: none; color: white;
+      width: 18px; height: 18px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; line-height: 1; font-family: inherit;
+    }
+    .member-chip button:hover { background: var(--vo-green); }
+
+    .form-footer {
+      margin-top: 28px; padding: 20px 0;
+      border-top: 1px solid var(--vo-border);
+      display: flex; justify-content: space-between; align-items: center; gap: 12px;
+    }
+    .form-footer-left, .form-footer-right { display: flex; gap: 10px; }
+
+    /* Toast */
+    .toast {
+      position: fixed; bottom: 28px; left: 50%;
+      transform: translateX(-50%);
+      background: var(--vo-black); color: white;
+      padding: 14px 22px;
+      box-shadow: var(--shadow-lg);
+      font-size: 14px; font-weight: 500;
+      z-index: 100;
+      animation: slideUp 0.25s ease-out;
+    }
+    @keyframes slideUp {
+      from { opacity: 0; transform: translate(-50%, 12px); }
+      to   { opacity: 1; transform: translate(-50%, 0); }
+    }
+    .toast.is-error { background: #B33A2A; }
+
+    /* Misc */
+    .icon { width: 16px; height: 16px; flex-shrink: 0; }
+    .help { color: var(--vo-subtle); font-size: 12.5px; margin-top: 6px; }
+    .row-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    @media (max-width: 540px) { .row-2 { grid-template-columns: 1fr; } }
+    .pill {
+      font-size: 11px;
+      font-family: 'DM Mono', monospace;
+      padding: 2px 8px;
+      background: var(--vo-soft);
+      color: var(--vo-muted);
+      letter-spacing: 0.02em;
+    }
+
+    /* ===== Hero (entity detail header) ===== */
+    .hero {
+      padding: 56px 0 40px;
+      border-bottom: 1px solid var(--vo-border);
+      margin-bottom: 32px;
+      position: relative;
+    }
+    .hero-band {
+      position: absolute; top: 0; left: 0; right: 0;
+      height: 8px;
+    }
+    .hero-band.green { background: var(--vo-green); }
+    .hero-band.peach { background: var(--vo-peach); }
+    .hero-band.mint  { background: var(--vo-mint); }
+    .hero-band.pink  { background: var(--vo-pink); }
+    .hero-band.sky   { background: var(--vo-sky); }
+
+    .breadcrumb {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 13px; color: var(--vo-muted);
+      margin-bottom: 18px;
+    }
+    .breadcrumb a { cursor: pointer; }
+    .breadcrumb a:hover { color: var(--vo-green); text-decoration: underline; }
+    .breadcrumb-sep { color: var(--vo-subtle); }
+
+    .hero-title {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 72px;
+      font-weight: 400;
+      font-style: italic;
+      color: var(--vo-black);
+      letter-spacing: -0.025em;
+      line-height: 1;
+      margin: 0 0 14px;
+    }
+    @media (max-width: 720px) { .hero-title { font-size: 48px; } }
+    .hero-meta {
+      font-size: 17px;
+      color: var(--vo-muted);
+      margin: 0 0 28px;
+    }
+    .hero-meta strong { color: var(--vo-black); font-weight: 600; }
+    .hero-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+
+    /* Stats grid */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-bottom: 40px;
+    }
+    @media (max-width: 720px) { .stats-grid { grid-template-columns: 1fr; } }
+    .stat {
+      background: var(--vo-soft);
+      padding: 24px;
+      border-left: 3px solid var(--vo-green);
+    }
+    .stat-label {
+      font-size: 11.5px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--vo-muted);
+      margin: 0 0 8px;
+    }
+    .stat-value {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 36px;
+      font-weight: 500;
+      color: var(--vo-black);
+      letter-spacing: -0.02em;
+      line-height: 1;
+      margin: 0 0 6px;
+    }
+    .stat-meta { font-size: 13px; color: var(--vo-muted); margin: 0; font-style: italic; }
+
+    /* Section header */
+    .section-head {
+      display: flex; align-items: baseline; justify-content: space-between;
+      margin: 40px 0 20px;
+      gap: 16px;
+    }
+    .section-head h2 {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 32px;
+      font-weight: 500;
+      color: var(--vo-black);
+      letter-spacing: -0.02em;
+      margin: 0;
+    }
+    .section-head h2 em { font-style: italic; font-weight: 400; color: var(--vo-green); }
+    .section-head .count { color: var(--vo-muted); font-size: 14px; }
+
+    /* Entity index (browse all authors / customers) */
+    .entity-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 16px;
+    }
+    .entity-card {
+      background: var(--vo-bg);
+      border: 1px solid var(--vo-border);
+      padding: 24px;
+      cursor: pointer;
+      transition: border-color 0.15s, box-shadow 0.15s;
+      display: block;
+    }
+    .entity-card:hover {
+      border-color: var(--vo-green);
+      box-shadow: var(--shadow);
+    }
+    .entity-card .name {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 22px;
+      font-weight: 500;
+      letter-spacing: -0.01em;
+      color: var(--vo-black);
+      margin: 0 0 6px;
+    }
+    .entity-card .sub {
+      color: var(--vo-muted);
+      font-size: 13.5px;
+      font-style: italic;
+      margin: 0 0 16px;
+    }
+    .entity-card .footer {
+      display: flex; align-items: center; justify-content: space-between;
+      padding-top: 14px;
+      border-top: 1px solid var(--vo-border);
+    }
+    .entity-card .count-big {
+      font-family: 'DM Mono', monospace;
+      font-size: 22px;
+      font-weight: 500;
+      color: var(--vo-green);
+      line-height: 1;
+    }
+    .entity-card .count-label {
+      font-size: 11.5px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--vo-muted);
+      font-weight: 600;
+    }
+    .entity-card .arrow {
+      color: var(--vo-muted);
+      transition: transform 0.15s, color 0.15s;
+    }
+    .entity-card:hover .arrow { color: var(--vo-green); transform: translateX(3px); }
+
+    /* Media grouping (customer detail: "in these media") */
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 12px;
+      margin-bottom: 32px;
+    }
+    .media-tile {
+      background: var(--vo-soft);
+      padding: 18px 20px;
+    }
+    .media-tile .name {
+      font-family: 'Fraunces', Georgia, serif;
+      font-size: 18px;
+      font-weight: 500;
+      color: var(--vo-black);
+      letter-spacing: -0.01em;
+      font-style: italic;
+      margin: 0 0 4px;
+    }
+    .media-tile .num {
+      font-size: 12.5px;
+      color: var(--vo-muted);
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+<div id="app" v-cloak>
+  <header class="header">
+    <div class="header-inner">
+      <a class="brand-link" href="/" @click.prevent="goto('/')">
+        <svg class="brand-logo" viewBox="0 0 84 56" xmlns="http://www.w3.org/2000/svg" aria-label="VisitOSLO">
+          <text x="42" y="14" text-anchor="middle" font-family="Outfit, Arial, sans-serif" font-size="9" font-weight="700" letter-spacing="2" fill="#000">VISIT</text>
+          <ellipse cx="42" cy="36" rx="32" ry="14" fill="none" stroke="#000" stroke-width="1.4"/>
+          <text x="42" y="40" text-anchor="middle" font-family="Outfit, Arial, sans-serif" font-size="11" font-weight="700" letter-spacing="3" fill="#000">OSLO</text>
+        </svg>
+        <span class="brand-divider"></span>
+        <span class="brand-app">Media omtale</span>
+      </a>
+      <nav class="nav">
+        <a @click.prevent="goto('/')" :class="{ active: ['list','new','edit'].includes(route.name) }">Omtaler</a>
+        <a @click.prevent="goto('/forfatter')" :class="{ active: ['authors','author'].includes(route.name) }">Forfattere</a>
+        <a @click.prevent="goto('/kunde')" :class="{ active: ['customers','customer'].includes(route.name) }">Kunder</a>
+      </nav>
+      <div class="header-spacer"></div>
+      <button class="test-toggle" :class="{ 'is-on': testMode }" @click="toggleTestMode">
+        <span class="switch"></span>
+        <span>Test modus</span>
+      </button>
+    </div>
+  </header>
+
+  <div v-if="testMode" class="test-banner">
+    <b>Test modus aktivert</b> — bruker dummy data, ingenting lagres til SuperOffice.
+    <button class="test-banner-link" @click="resetTestData">Tilbakestill data</button>
+  </div>
+
+  <main class="main">
+
+    <!-- =========================== LIST (omtaler) =========================== -->
+    <div v-if="route.name === 'list'">
+      <div class="page-head">
+        <div>
+          <h1 class="page-title">Media <em>omtale</em></h1>
+          <p class="page-subtitle">{{ filteredMentions.length }} {{ filteredMentions.length === 1 ? 'omtale' : 'omtaler' }}{{ hasActiveFilters ? ' (filtrert)' : '' }}</p>
+        </div>
+        <button class="btn btn-cta" @click="goto('/ny')">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+          Ny omtale
+        </button>
+      </div>
+
+      <div class="toolbar">
+        <div class="toolbar-grow">
+          <input class="input search" v-model="filter.search" placeholder="Søk i tittel..." />
+        </div>
+        <select class="select" v-model="filter.category" style="width: 220px;">
+          <option value="">Alle kategorier</option>
+          <option v-for="c in categories" :key="c" :value="c">{{ c }}</option>
+        </select>
+        <input type="date" class="input" v-model="filter.fromDate" style="width: 160px;" />
+        <input type="date" class="input" v-model="filter.toDate" style="width: 160px;" />
+        <button v-if="hasActiveFilters" class="btn btn-ghost" @click="clearFilters">Nullstill</button>
+      </div>
+
+      <div class="table-wrap">
+        <div v-if="filteredMentions.length === 0" class="empty">
+          <div class="empty-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="15" y2="17"/></svg>
+          </div>
+          <h3>{{ mentions.length === 0 ? 'Ingen omtaler ennå' : 'Ingen treff' }}</h3>
+          <p>{{ mentions.length === 0 ? 'Registrer den første medieomtalen for VisitOSLO.' : 'Prøv å justere søk eller filter.' }}</p>
+          <button v-if="mentions.length === 0" class="btn btn-cta" @click="goto('/ny')">+ Registrer omtale</button>
+        </div>
+
+        <table v-else>
+          <thead>
+            <tr>
+              <th style="width: 110px">Dato</th>
+              <th>Tittel</th>
+              <th style="width: 200px">Kategori</th>
+              <th style="width: 170px">Kilde</th>
+              <th style="width: 200px">Forfatter</th>
+              <th style="width: 100px">Medlemmer</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="m in filteredMentions" :key="m.mediaMentionId" class="clickable" @click="goto('/rediger/' + m.mediaMentionId)">
+              <td class="cell-date">{{ formatDate(m.publicationDate) }}</td>
+              <td class="cell-title">{{ m.title || '(uten tittel)' }}</td>
+              <td><span class="chip" :data-cat="m.category">{{ m.category || '—' }}</span></td>
+              <td class="cell-source">{{ m.source || '—' }}</td>
+              <td class="cell-author">
+                <a @click.stop="goto('/forfatter/' + m.authorPersonId)">{{ authorName(m) }}</a>
+              </td>
+              <td>
+                <span class="chip-count">
+                  <svg class="icon" style="width:12px;height:12px" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                  {{ m.members.length }}
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- =========================== FORM (ny / rediger) =========================== -->
+    <div v-else-if="route.name === 'new' || route.name === 'edit'">
+      <div class="form-head">
+        <button class="btn btn-icon" @click="cancelForm" title="Tilbake">
+          <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12 19-7-7 7-7"/><path d="M19 12H5"/></svg>
+        </button>
+        <div>
+          <h1 class="page-title" style="font-size: 38px;">{{ route.name === 'edit' ? 'Rediger' : 'Ny' }} <em>omtale</em></h1>
+          <p class="page-subtitle" v-if="route.name === 'edit'">ID: <span class="pill">#{{ route.params.id }}</span></p>
+        </div>
+      </div>
+
+      <div class="form-grid">
+        <div>
+          <div class="card">
+            <h3>Forfatter & <em>publisering</em></h3>
+
+            <div class="field">
+              <label class="label">Forfatter <span class="req">*</span></label>
+              <div v-if="form.authorPersonId" class="author-selected">
+                <div>
+                  <div class="name">{{ form.authorFirstName }} {{ form.authorLastName }}</div>
+                  <div class="meta" v-if="form.authorCompanyName">{{ form.authorCompanyName }}</div>
+                </div>
+                <button class="btn-icon" @click="clearAuthor" title="Fjern">
+                  <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+                </button>
+              </div>
+              <div v-else class="picker">
+                <input class="input" v-model="authorSearch" @input="searchAuthors" @focus="searchAuthors" placeholder="Søk etter person i SuperOffice..." />
+                <div v-if="authorResults.length > 0 && authorSearch" class="picker-results">
+                  <div v-for="p in authorResults" :key="p.personId" class="picker-row" @click="selectAuthor(p)">
+                    <div>
+                      <div class="name">{{ p.firstName }} {{ p.lastName }}</div>
+                      <div class="meta" v-if="p.companyName">{{ p.companyName }}</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="row-2">
+              <div class="field">
+                <label class="label">Publikasjonsdato <span class="req">*</span></label>
+                <input type="date" class="input" v-model="form.publicationDate" />
+              </div>
+              <div class="field">
+                <label class="label">Kategori <span class="req">*</span></label>
+                <select class="select" v-model="form.category">
+                  <option value="">Velg...</option>
+                  <option v-for="c in categories" :key="c" :value="c">{{ c }}</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="field">
+              <label class="label">Kilde / publikasjon</label>
+              <input class="input" v-model="form.source" placeholder="f.eks. Aftenposten, NRK, Condé Nast Traveler" />
+            </div>
+
+            <div class="field">
+              <label class="label">Lenke til artikkel</label>
+              <input class="input" v-model="form.url" placeholder="https://..." />
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Nevnte <em>medlemmer</em></h3>
+
+            <div v-if="form.members.length > 0" class="chips">
+              <span v-for="m in form.members" :key="m.memberId" class="member-chip">
+                {{ m.memberName }}
+                <button @click="removeMember(m.memberId)" title="Fjern">×</button>
+              </span>
+            </div>
+
+            <div class="picker">
+              <input class="input" v-model="memberSearch" @input="searchMembers" @focus="searchMembers" placeholder="Legg til medlem (søk etter navn)..." />
+              <div v-if="memberResults.length > 0 && memberSearch" class="picker-results">
+                <div v-for="m in memberResults" :key="m.memberId" class="picker-row" :class="{ 'is-selected': isMemberSelected(m.memberId) }" @click="addMember(m)">
+                  <div>
+                    <div class="name">{{ m.memberName }}</div>
+                    <div class="meta" v-if="m.category">{{ m.category }}</div>
+                  </div>
+                  <span v-if="isMemberSelected(m.memberId)" class="meta">valgt</span>
+                </div>
+              </div>
+            </div>
+            <p class="help">Søk og klikk for å legge til. Du kan velge flere.</p>
+          </div>
+        </div>
+
+        <div>
+          <div class="card">
+            <h3>Innhold</h3>
+
+            <div class="field">
+              <label class="label">Tittel <span class="req">*</span></label>
+              <input class="input" v-model="form.title" placeholder="Tittelen på artikkelen" />
+            </div>
+
+            <div class="field">
+              <label class="label">Innhold / sammendrag</label>
+              <textarea class="input" v-model="form.content" rows="6" placeholder="Sammendrag av artikkelen, eventuelt utdrag eller ingress..."></textarea>
+            </div>
+          </div>
+
+          <div class="card">
+            <h3>Interne <em>kommentarer</em></h3>
+            <div class="field">
+              <textarea class="input" v-model="form.comment" rows="4" placeholder="Notater til teamet — sentiment, oppfølging, etc."></textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-footer">
+        <div class="form-footer-left">
+          <button v-if="route.name === 'edit'" class="btn btn-danger" @click="confirmDelete">Slett omtale</button>
+        </div>
+        <div class="form-footer-right">
+          <button class="btn btn-ghost" @click="cancelForm">Avbryt</button>
+          <button class="btn btn-cta" @click="saveForm" :disabled="!isValid">
+            {{ route.name === 'edit' ? 'Lagre endringer' : 'Lagre omtale' }}
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- =========================== AUTHORS (oversikt) =========================== -->
+    <div v-else-if="route.name === 'authors'">
+      <div class="page-head">
+        <div>
+          <h1 class="page-title">Forfat<em>tere</em></h1>
+          <p class="page-subtitle">{{ authorsList.length }} {{ authorsList.length === 1 ? 'forfatter' : 'forfattere' }} har skrevet om VisitOSLO</p>
+        </div>
+      </div>
+
+      <div class="toolbar">
+        <div class="toolbar-grow">
+          <input class="input search" v-model="authorIndexSearch" placeholder="Søk etter navn eller publikasjon..." />
+        </div>
+      </div>
+
+      <div v-if="filteredAuthorsList.length === 0" class="empty">
+        <h3>Ingen forfattere</h3>
+        <p>Registrer en omtale for å se forfattere her.</p>
+      </div>
+      <div v-else class="entity-grid">
+        <a v-for="a in filteredAuthorsList" :key="a.personId" class="entity-card" @click="goto('/forfatter/' + a.personId)">
+          <div class="name">{{ a.firstName }} {{ a.lastName }}</div>
+          <div class="sub">{{ a.companyName || 'Ukjent publikasjon' }}</div>
+          <div class="footer">
+            <div>
+              <div class="count-big">{{ a.count }}</div>
+              <div class="count-label">{{ a.count === 1 ? 'omtale' : 'omtaler' }}</div>
+            </div>
+            <svg class="arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- =========================== AUTHOR (detalj) =========================== -->
+    <div v-else-if="route.name === 'author'">
+      <template v-if="currentAuthor">
+        <div class="hero">
+          <div class="hero-band peach"></div>
+          <div class="breadcrumb">
+            <a @click="goto('/forfatter')">Forfattere</a>
+            <span class="breadcrumb-sep">/</span>
+            <span>{{ currentAuthor.firstName }} {{ currentAuthor.lastName }}</span>
+          </div>
+          <h1 class="hero-title">{{ currentAuthor.firstName }} {{ currentAuthor.lastName }}</h1>
+          <p class="hero-meta">
+            <strong>{{ currentAuthor.companyName || 'Ukjent publikasjon' }}</strong>
+            · {{ currentAuthorMentions.length }} {{ currentAuthorMentions.length === 1 ? 'omtale' : 'omtaler' }} totalt
+          </p>
+          <div class="hero-actions">
+            <button class="btn btn-cta" @click="newMentionFromAuthor(currentAuthor)">
+              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12h14"/></svg>
+              Registrer ny omtale fra {{ currentAuthor.firstName }}
+            </button>
+          </div>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat">
+            <p class="stat-label">Totalt</p>
+            <p class="stat-value">{{ currentAuthorMentions.length }}</p>
+            <p class="stat-meta">{{ currentAuthorMentions.length === 1 ? 'omtale registrert' : 'omtaler registrert' }}</p>
+          </div>
+          <div class="stat">
+            <p class="stat-label">Periode</p>
+            <p class="stat-value" style="font-size: 22px;">{{ currentAuthorStats.dateRange }}</p>
+            <p class="stat-meta">første → siste omtale</p>
+          </div>
+          <div class="stat">
+            <p class="stat-label">Mest omtalt</p>
+            <p class="stat-value" style="font-size: 22px;">{{ currentAuthorStats.topMember || '—' }}</p>
+            <p class="stat-meta">av VisitOSLOs medlemmer</p>
+          </div>
+        </div>
+
+        <div class="section-head">
+          <h2>Omta<em>ler</em></h2>
+          <span class="count">Sortert etter dato, nyeste først</span>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th style="width: 110px">Dato</th>
+                <th>Tittel</th>
+                <th style="width: 200px">Kategori</th>
+                <th style="width: 170px">Kilde</th>
+                <th style="width: 100px">Medlemmer</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="m in currentAuthorMentions" :key="m.mediaMentionId" class="clickable" @click="goto('/rediger/' + m.mediaMentionId)">
+                <td class="cell-date">{{ formatDate(m.publicationDate) }}</td>
+                <td class="cell-title">{{ m.title || '(uten tittel)' }}</td>
+                <td><span class="chip" :data-cat="m.category">{{ m.category || '—' }}</span></td>
+                <td class="cell-source">{{ m.source || '—' }}</td>
+                <td><span class="chip-count">{{ m.members.length }}</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </template>
+      <div v-else class="empty">
+        <h3>Forfatter ikke funnet</h3>
+        <p>Denne forfatteren har ingen registrerte omtaler.</p>
+        <button class="btn btn-ghost" @click="goto('/forfatter')">← Tilbake til forfattere</button>
+      </div>
+    </div>
+
+    <!-- =========================== CUSTOMERS (oversikt) =========================== -->
+    <div v-else-if="route.name === 'customers'">
+      <div class="page-head">
+        <div>
+          <h1 class="page-title">Kun<em>der</em></h1>
+          <p class="page-subtitle">{{ customersList.length }} {{ customersList.length === 1 ? 'medlem omtalt' : 'medlemmer omtalt' }}</p>
+        </div>
+      </div>
+
+      <div class="toolbar">
+        <div class="toolbar-grow">
+          <input class="input search" v-model="customerIndexSearch" placeholder="Søk etter medlem..." />
+        </div>
+      </div>
+
+      <div v-if="filteredCustomersList.length === 0" class="empty">
+        <h3>Ingen kunder</h3>
+        <p>Ingen medlemmer er nevnt i registrerte omtaler ennå.</p>
+      </div>
+      <div v-else class="entity-grid">
+        <a v-for="c in filteredCustomersList" :key="c.memberId" class="entity-card" @click="goto('/kunde/' + c.memberId)">
+          <div class="name">{{ c.memberName }}</div>
+          <div class="sub">{{ c.category || 'VisitOSLO-medlem' }}</div>
+          <div class="footer">
+            <div>
+              <div class="count-big">{{ c.count }}</div>
+              <div class="count-label">{{ c.count === 1 ? 'omtale' : 'omtaler' }}</div>
+            </div>
+            <svg class="arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </div>
+        </a>
+      </div>
+    </div>
+
+    <!-- =========================== CUSTOMER (detalj) =========================== -->
+    <div v-else-if="route.name === 'customer'">
+      <template v-if="currentCustomer">
+        <div class="hero">
+          <div class="hero-band sky"></div>
+          <div class="breadcrumb">
+            <a @click="goto('/kunde')">Kunder</a>
+            <span class="breadcrumb-sep">/</span>
+            <span>{{ currentCustomer.memberName }}</span>
+          </div>
+          <h1 class="hero-title">{{ currentCustomer.memberName }}</h1>
+          <p class="hero-meta">
+            <strong>{{ currentCustomer.category || 'VisitOSLO-medlem' }}</strong>
+            · nevnt i {{ currentCustomerMentions.length }} {{ currentCustomerMentions.length === 1 ? 'omtale' : 'omtaler' }}
+          </p>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat" style="border-left-color: var(--vo-green);">
+            <p class="stat-label">Totalt</p>
+            <p class="stat-value">{{ currentCustomerMentions.length }}</p>
+            <p class="stat-meta">{{ currentCustomerMentions.length === 1 ? 'omtale' : 'omtaler' }}</p>
+          </div>
+          <div class="stat" style="border-left-color: var(--vo-green);">
+            <p class="stat-label">Periode</p>
+            <p class="stat-value" style="font-size: 22px;">{{ currentCustomerStats.dateRange }}</p>
+            <p class="stat-meta">første → siste omtale</p>
+          </div>
+          <div class="stat" style="border-left-color: var(--vo-green);">
+            <p class="stat-label">Topp kilde</p>
+            <p class="stat-value" style="font-size: 22px;">{{ currentCustomerStats.topSource || '—' }}</p>
+            <p class="stat-meta">flest omtaler herfra</p>
+          </div>
+        </div>
+
+        <div class="section-head">
+          <h2>I disse <em>mediene</em></h2>
+          <span class="count">{{ currentCustomerStats.byMedia.length }} {{ currentCustomerStats.byMedia.length === 1 ? 'kilde' : 'kilder' }}</span>
+        </div>
+        <div class="media-grid">
+          <div v-for="m in currentCustomerStats.byMedia" :key="m.source" class="media-tile">
+            <div class="name">{{ m.source }}</div>
+            <div class="num">{{ m.count }} {{ m.count === 1 ? 'omtale' : 'omtaler' }}</div>
+          </div>
+        </div>
+
+        <div class="section-head">
+          <h2>Alle om<em>taler</em></h2>
+          <span class="count">Sortert etter dato, nyeste først</span>
+        </div>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th style="width: 110px">Dato</th>
+                <th>Tittel</th>
+                <th style="width: 200px">Kategori</th>
+                <th style="width: 170px">Kilde</th>
+                <th style="width: 200px">Forfatter</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="m in currentCustomerMentions" :key="m.mediaMentionId" class="clickable" @click="goto('/rediger/' + m.mediaMentionId)">
+                <td class="cell-date">{{ formatDate(m.publicationDate) }}</td>
+                <td class="cell-title">{{ m.title || '(uten tittel)' }}</td>
+                <td><span class="chip" :data-cat="m.category">{{ m.category || '—' }}</span></td>
+                <td class="cell-source">{{ m.source || '—' }}</td>
+                <td class="cell-author">
+                  <a @click.stop="goto('/forfatter/' + m.authorPersonId)">{{ authorName(m) }}</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </template>
+      <div v-else class="empty">
+        <h3>Kunde ikke funnet</h3>
+        <p>Dette medlemmet er ikke nevnt i registrerte omtaler.</p>
+        <button class="btn btn-ghost" @click="goto('/kunde')">← Tilbake til kunder</button>
+      </div>
+    </div>
+
+  </main>
+
+  <transition>
+    <div v-if="toast" class="toast" :class="{ 'is-error': toast.type === 'error' }">{{ toast.message }}</div>
+  </transition>
+</div>
+
+<script src="https://unpkg.com/vue@3/dist/vue.global.prod.js"></script>
+<script>
+const { createApp, ref, computed, onMounted, watch } = Vue;
+
+/* ==================== CONFIG ==================== */
+const CATEGORIES = [
+  'Reisereportasje', 'Anmeldelse', 'Nyhetsartikkel', 'Intervju',
+  'Blogg / Influenser', 'TV / Radio', 'Podkast', 'Sosiale medier',
+  'Bransje / Fagpresse', 'Pressemelding-dekning'
+];
+
+const STORAGE_KEY = 'visit-oslo-media-test-data';
+
+const BACKEND = {
+  baseUrl: '',
+  apiKey: '',
+  saveIncludeId: 'visit-oslo-save-mention',
+  getIncludeId: 'visit-oslo-get-mention',
+  listIncludeId: 'visit-oslo-list-mentions',
+};
+
+/* ==================== DUMMY DATA ==================== */
+const DUMMY_AUTHORS = [
+  { personId: 101, firstName: 'Anna',   lastName: 'Kowalski',  companyName: 'Condé Nast Traveler' },
+  { personId: 102, firstName: 'James',  lastName: 'Whitfield', companyName: 'The Guardian' },
+  { personId: 103, firstName: 'Maja',   lastName: 'Solli',     companyName: 'Aftenposten' },
+  { personId: 104, firstName: 'Henrik', lastName: 'Thune',     companyName: 'NRK' },
+  { personId: 105, firstName: 'Sofia',  lastName: 'Bergström', companyName: 'Svenska Dagbladet' },
+  { personId: 106, firstName: 'Liv',    lastName: 'Tønnesen',  companyName: 'VG' },
+  { personId: 107, firstName: 'Marius', lastName: 'Helgå',     companyName: 'Dagbladet' },
+  { personId: 108, firstName: 'Hans',   lastName: 'Müller',    companyName: 'Süddeutsche Zeitung' },
+  { personId: 109, firstName: 'Emma',   lastName: 'Lindqvist', companyName: 'Travel + Leisure' },
+  { personId: 110, firstName: 'Pierre', lastName: 'Dubois',    companyName: 'Le Figaro' },
+];
+
+const DUMMY_MEMBERS = [
+  { memberId: 201, memberName: 'Grand Hotel Oslo',         category: 'Hotell' },
+  { memberId: 202, memberName: 'The Thief',                category: 'Hotell' },
+  { memberId: 203, memberName: 'Sommerro House',           category: 'Hotell' },
+  { memberId: 204, memberName: 'Holmenkollen Park Hotel',  category: 'Hotell' },
+  { memberId: 205, memberName: 'Munchmuseet',              category: 'Attraksjon' },
+  { memberId: 206, memberName: 'Nasjonalmuseet',           category: 'Attraksjon' },
+  { memberId: 207, memberName: 'Maaemo',                   category: 'Restaurant' },
+  { memberId: 208, memberName: 'Kontrast',                 category: 'Restaurant' },
+  { memberId: 209, memberName: 'Vippa',                    category: 'Restaurant' },
+  { memberId: 210, memberName: 'Mathallen Oslo',           category: 'Restaurant' },
+  { memberId: 211, memberName: 'Tjuvholmen Sjømagasin',    category: 'Restaurant' },
+  { memberId: 212, memberName: 'Salt Art & Music',         category: 'Attraksjon' },
+  { memberId: 213, memberName: 'Vigelandsparken',          category: 'Attraksjon' },
+  { memberId: 214, memberName: 'Fram-museet',              category: 'Attraksjon' },
+  { memberId: 215, memberName: 'Akrobaten',                category: 'Attraksjon' },
+];
+
+const seedMentions = () => ([
+  {
+    mediaMentionId: 1,
+    authorPersonId: 101, authorFirstName: 'Anna', authorLastName: 'Kowalski', authorCompanyName: 'Condé Nast Traveler',
+    publicationDate: '2026-03-15',
+    title: 'Oslo: Den nye nordiske hovedstaden for matelskere',
+    content: 'En reisereportasje om Oslos voksende posisjon som matdestinasjon, med fokus på nye michelin-restauranter og det levende mathallene.',
+    category: 'Reisereportasje', source: 'Condé Nast Traveler',
+    url: 'https://example.com/oslo-mat',
+    comment: 'Veldig positiv omtale. Følg opp med pressepakke om vinmenyene til Maaemo.',
+    members: [
+      { memberId: 207, memberName: 'Maaemo' },
+      { memberId: 203, memberName: 'Sommerro House' },
+      { memberId: 209, memberName: 'Vippa' },
+    ],
+  },
+  {
+    mediaMentionId: 2,
+    authorPersonId: 102, authorFirstName: 'James', authorLastName: 'Whitfield', authorCompanyName: 'The Guardian',
+    publicationDate: '2026-02-20',
+    title: '48 hours in Oslo: a city reborn',
+    content: 'Klassisk 48-timers reiseguide som dekker hovedattraksjoner og nye områder.',
+    category: 'Reisereportasje', source: 'The Guardian',
+    url: 'https://example.com/48h-oslo',
+    comment: 'Stort opplag. Nevner Munch og Mathallen positivt.',
+    members: [
+      { memberId: 205, memberName: 'Munchmuseet' },
+      { memberId: 201, memberName: 'Grand Hotel Oslo' },
+      { memberId: 210, memberName: 'Mathallen Oslo' },
+    ],
+  },
+  {
+    mediaMentionId: 3,
+    authorPersonId: 104, authorFirstName: 'Henrik', authorLastName: 'Thune', authorCompanyName: 'NRK',
+    publicationDate: '2026-01-10',
+    title: 'Oslo som vinterdestinasjon — rekord i utenlandske besøkende',
+    content: 'Nyhetsdekning av vintersesongens turismetall.',
+    category: 'Nyhetsartikkel', source: 'NRK',
+    url: 'https://example.com/nrk-vinter',
+    comment: '',
+    members: [{ memberId: 204, memberName: 'Holmenkollen Park Hotel' }],
+  },
+  {
+    mediaMentionId: 4,
+    authorPersonId: 103, authorFirstName: 'Maja', authorLastName: 'Solli', authorCompanyName: 'Aftenposten',
+    publicationDate: '2026-04-05',
+    title: 'Anmeldelse: Sommerro setter ny standard',
+    content: 'Restaurantanmeldelse av Sommerro Houses spisesteder.',
+    category: 'Anmeldelse', source: 'Aftenposten',
+    url: 'https://example.com/sommerro',
+    comment: 'Terningkast 5.',
+    members: [{ memberId: 203, memberName: 'Sommerro House' }],
+  },
+  {
+    mediaMentionId: 5,
+    authorPersonId: 105, authorFirstName: 'Sofia', authorLastName: 'Bergström', authorCompanyName: 'Svenska Dagbladet',
+    publicationDate: '2026-03-28',
+    title: 'Det nya Oslo-bohemen: konst, mat och fjordarna',
+    content: 'Reportasje om Oslos kreative miljø og nye opplevelser ved fjorden.',
+    category: 'Reisereportasje', source: 'Svenska Dagbladet',
+    url: 'https://example.com/svd-oslo',
+    comment: 'Svensk publikum — viktig marked.',
+    members: [
+      { memberId: 212, memberName: 'Salt Art & Music' },
+      { memberId: 209, memberName: 'Vippa' },
+      { memberId: 211, memberName: 'Tjuvholmen Sjømagasin' },
+    ],
+  },
+  {
+    mediaMentionId: 6,
+    authorPersonId: 101, authorFirstName: 'Anna', authorLastName: 'Kowalski', authorCompanyName: 'Condé Nast Traveler',
+    publicationDate: '2025-11-08',
+    title: 'Why Oslo should be on your 2026 travel list',
+    content: 'Tidligere reportasje fra samme journalist.',
+    category: 'Reisereportasje', source: 'Condé Nast Traveler',
+    url: 'https://example.com/cn-2026',
+    comment: '',
+    members: [
+      { memberId: 205, memberName: 'Munchmuseet' },
+      { memberId: 207, memberName: 'Maaemo' },
+    ],
+  },
+  {
+    mediaMentionId: 7,
+    authorPersonId: 109, authorFirstName: 'Emma', authorLastName: 'Lindqvist', authorCompanyName: 'Travel + Leisure',
+    publicationDate: '2026-02-02',
+    title: 'Sommerro House: The hottel reshaping Oslo nightlife',
+    content: 'Featurevars om Sommerros barer og restauranter.',
+    category: 'Anmeldelse', source: 'Travel + Leisure',
+    url: 'https://example.com/tl-sommerro',
+    comment: '',
+    members: [{ memberId: 203, memberName: 'Sommerro House' }],
+  },
+]);
+
+/* ==================== ROUTING ==================== */
+const parseUrl = () => {
+  const path = location.pathname;
+  if (path === '/' || path === '/index.html' || path === '') return { name: 'list', params: {} };
+  if (path === '/ny') return { name: 'new', params: {}, query: parseQuery() };
+  let m = path.match(/^\/rediger\/(\d+)\/?$/);
+  if (m) return { name: 'edit', params: { id: parseInt(m[1]) } };
+  if (path === '/forfatter' || path === '/forfatter/') return { name: 'authors', params: {} };
+  m = path.match(/^\/forfatter\/(\d+)\/?$/);
+  if (m) return { name: 'author', params: { id: parseInt(m[1]) } };
+  if (path === '/kunde' || path === '/kunde/') return { name: 'customers', params: {} };
+  m = path.match(/^\/kunde\/(\d+)\/?$/);
+  if (m) return { name: 'customer', params: { id: parseInt(m[1]) } };
+  return { name: 'list', params: {} };
+};
+const parseQuery = () => {
+  const p = new URLSearchParams(location.search);
+  const out = {};
+  for (const [k, v] of p) out[k] = v;
+  return out;
+};
+
+/* ==================== APP ==================== */
+const emptyForm = () => ({
+  authorPersonId: null,
+  authorFirstName: '', authorLastName: '', authorCompanyName: '',
+  publicationDate: new Date().toISOString().slice(0, 10),
+  title: '', content: '', category: '',
+  source: '', url: '', comment: '',
+  members: [],
+});
+
+createApp({
+  setup() {
+    const route = ref(parseUrl());
+    const testMode = ref(true);
+    const mentions = ref([]);
+
+    const form = ref(emptyForm());
+    const filter = ref({ search: '', category: '', fromDate: '', toDate: '' });
+
+    const authorIndexSearch = ref('');
+    const customerIndexSearch = ref('');
+
+    const authorSearch = ref('');
+    const authorResults = ref([]);
+    const memberSearch = ref('');
+    const memberResults = ref([]);
+    const toast = ref(null);
+
+    const categories = CATEGORIES;
+
+    /* ---- Routing ---- */
+    const goto = (path) => {
+      if (location.pathname + location.search === path) return;
+      history.pushState(null, '', path);
+      route.value = parseUrl();
+      window.scrollTo({ top: 0, behavior: 'instant' });
+    };
+    window.addEventListener('popstate', () => { route.value = parseUrl(); });
+
+    /* ---- Persistence ---- */
+    const loadFromStorage = () => {
+      try {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (raw) { mentions.value = JSON.parse(raw); return true; }
+      } catch (e) {}
+      return false;
+    };
+    const saveToStorage = () => {
+      try { localStorage.setItem(STORAGE_KEY, JSON.stringify(mentions.value)); } catch (e) {}
+    };
+    const initData = () => {
+      if (testMode.value) {
+        if (!loadFromStorage()) { mentions.value = seedMentions(); saveToStorage(); }
+      } else {
+        mentions.value = [];
+      }
+    };
+    const resetTestData = () => {
+      mentions.value = seedMentions(); saveToStorage();
+      showToast('Testdata tilbakestilt');
+    };
+    const toggleTestMode = () => {
+      testMode.value = !testMode.value; initData();
+      showToast(testMode.value ? 'Test modus på' : 'Test modus av — kobler til SuperOffice (krever konfig)');
+    };
+
+    /* ---- List filters ---- */
+    const hasActiveFilters = computed(() =>
+      filter.value.search || filter.value.category || filter.value.fromDate || filter.value.toDate
+    );
+    const clearFilters = () => { filter.value = { search: '', category: '', fromDate: '', toDate: '' }; };
+    const filteredMentions = computed(() => {
+      let list = mentions.value.slice().sort((a, b) => (b.publicationDate || '').localeCompare(a.publicationDate || ''));
+      const f = filter.value;
+      if (f.search) {
+        const q = f.search.toLowerCase();
+        list = list.filter(m => (m.title || '').toLowerCase().includes(q));
+      }
+      if (f.category) list = list.filter(m => m.category === f.category);
+      if (f.fromDate) list = list.filter(m => (m.publicationDate || '') >= f.fromDate);
+      if (f.toDate)   list = list.filter(m => (m.publicationDate || '') <= f.toDate);
+      return list;
+    });
+
+    /* ---- Authors aggregation ---- */
+    const authorsList = computed(() => {
+      const byId = new Map();
+      mentions.value.forEach(m => {
+        if (!m.authorPersonId) return;
+        if (!byId.has(m.authorPersonId)) {
+          byId.set(m.authorPersonId, {
+            personId: m.authorPersonId,
+            firstName: m.authorFirstName || '',
+            lastName: m.authorLastName || '',
+            companyName: m.authorCompanyName || '',
+            count: 0,
+          });
+        }
+        byId.get(m.authorPersonId).count++;
+      });
+      return [...byId.values()].sort((a, b) => b.count - a.count || a.lastName.localeCompare(b.lastName));
+    });
+    const filteredAuthorsList = computed(() => {
+      const q = authorIndexSearch.value.trim().toLowerCase();
+      if (!q) return authorsList.value;
+      return authorsList.value.filter(a =>
+        (a.firstName + ' ' + a.lastName).toLowerCase().includes(q) ||
+        (a.companyName || '').toLowerCase().includes(q)
+      );
+    });
+    const currentAuthor = computed(() => {
+      if (route.value.name !== 'author') return null;
+      return authorsList.value.find(a => a.personId === route.value.params.id) || null;
+    });
+    const currentAuthorMentions = computed(() => {
+      if (!currentAuthor.value) return [];
+      return mentions.value
+        .filter(m => m.authorPersonId === currentAuthor.value.personId)
+        .sort((a, b) => (b.publicationDate || '').localeCompare(a.publicationDate || ''));
+    });
+    const currentAuthorStats = computed(() => {
+      const ms = currentAuthorMentions.value;
+      if (ms.length === 0) return { dateRange: '—', topMember: '—' };
+      const dates = ms.map(m => m.publicationDate).filter(Boolean).sort();
+      const dateRange = dates.length === 0 ? '—'
+        : dates.length === 1 ? formatDate(dates[0])
+        : `${formatDate(dates[0])} → ${formatDate(dates[dates.length - 1])}`;
+      const counts = new Map();
+      ms.forEach(m => m.members.forEach(mb => {
+        counts.set(mb.memberName, (counts.get(mb.memberName) || 0) + 1);
+      }));
+      let topMember = '';
+      let max = 0;
+      counts.forEach((c, name) => { if (c > max) { max = c; topMember = name; } });
+      return { dateRange, topMember };
+    });
+
+    /* ---- Customers (members) aggregation ---- */
+    const customersList = computed(() => {
+      const byId = new Map();
+      mentions.value.forEach(m => {
+        m.members.forEach(mb => {
+          if (!byId.has(mb.memberId)) {
+            const dummy = DUMMY_MEMBERS.find(d => d.memberId === mb.memberId);
+            byId.set(mb.memberId, {
+              memberId: mb.memberId,
+              memberName: mb.memberName,
+              category: dummy ? dummy.category : '',
+              count: 0,
+            });
+          }
+          byId.get(mb.memberId).count++;
+        });
+      });
+      return [...byId.values()].sort((a, b) => b.count - a.count || a.memberName.localeCompare(b.memberName));
+    });
+    const filteredCustomersList = computed(() => {
+      const q = customerIndexSearch.value.trim().toLowerCase();
+      if (!q) return customersList.value;
+      return customersList.value.filter(c =>
+        c.memberName.toLowerCase().includes(q) ||
+        (c.category || '').toLowerCase().includes(q)
+      );
+    });
+    const currentCustomer = computed(() => {
+      if (route.value.name !== 'customer') return null;
+      return customersList.value.find(c => c.memberId === route.value.params.id) || null;
+    });
+    const currentCustomerMentions = computed(() => {
+      if (!currentCustomer.value) return [];
+      const id = currentCustomer.value.memberId;
+      return mentions.value
+        .filter(m => m.members.some(mb => mb.memberId === id))
+        .sort((a, b) => (b.publicationDate || '').localeCompare(a.publicationDate || ''));
+    });
+    const currentCustomerStats = computed(() => {
+      const ms = currentCustomerMentions.value;
+      if (ms.length === 0) return { dateRange: '—', topSource: '—', byMedia: [] };
+      const dates = ms.map(m => m.publicationDate).filter(Boolean).sort();
+      const dateRange = dates.length === 0 ? '—'
+        : dates.length === 1 ? formatDate(dates[0])
+        : `${formatDate(dates[0])} → ${formatDate(dates[dates.length - 1])}`;
+      const sourceCounts = new Map();
+      ms.forEach(m => {
+        const s = m.source || '(ukjent kilde)';
+        sourceCounts.set(s, (sourceCounts.get(s) || 0) + 1);
+      });
+      const byMedia = [...sourceCounts.entries()]
+        .map(([source, count]) => ({ source, count }))
+        .sort((a, b) => b.count - a.count);
+      const topSource = byMedia.length > 0 ? byMedia[0].source : '—';
+      return { dateRange, topSource, byMedia };
+    });
+
+    /* ---- Form handling ---- */
+    const isValid = computed(() =>
+      form.value.authorPersonId &&
+      form.value.publicationDate &&
+      form.value.title.trim() &&
+      form.value.category
+    );
+
+    // Sync form state to route changes
+    watch(route, (newRoute) => {
+      if (newRoute.name === 'new') {
+        form.value = emptyForm();
+        const q = newRoute.query || {};
+        if (q.forfatter) {
+          const id = parseInt(q.forfatter);
+          const dummy = DUMMY_AUTHORS.find(a => a.personId === id);
+          const fromMentions = authorsList.value.find(a => a.personId === id);
+          const src = dummy || fromMentions;
+          if (src) {
+            form.value.authorPersonId = src.personId;
+            form.value.authorFirstName = src.firstName;
+            form.value.authorLastName = src.lastName;
+            form.value.authorCompanyName = src.companyName || '';
+            if (src.companyName) form.value.source = src.companyName;
+          }
+        }
+        authorSearch.value = ''; memberSearch.value = '';
+      } else if (newRoute.name === 'edit') {
+        const m = mentions.value.find(x => x.mediaMentionId === newRoute.params.id);
+        if (m) {
+          form.value = {
+            authorPersonId: m.authorPersonId,
+            authorFirstName: m.authorFirstName, authorLastName: m.authorLastName, authorCompanyName: m.authorCompanyName,
+            publicationDate: m.publicationDate,
+            title: m.title, content: m.content, category: m.category,
+            source: m.source, url: m.url, comment: m.comment,
+            members: m.members.map(x => ({ ...x })),
+          };
+        }
+        authorSearch.value = ''; memberSearch.value = '';
+      }
+    }, { immediate: false });
+
+    const cancelForm = () => {
+      // Smart back: if there's history, go back; otherwise go to list
+      if (history.length > 1) history.back();
+      else goto('/');
+    };
+
+    const newMentionFromAuthor = (author) => {
+      goto('/ny?forfatter=' + author.personId);
+    };
+
+    const saveForm = async () => {
+      if (!isValid.value) {
+        showToast('Fyll inn forfatter, dato, tittel og kategori', 'error');
+        return;
+      }
+      if (testMode.value) {
+        if (route.value.name === 'edit') {
+          const id = route.value.params.id;
+          const idx = mentions.value.findIndex(x => x.mediaMentionId === id);
+          if (idx >= 0) mentions.value[idx] = { ...form.value, mediaMentionId: id };
+        } else {
+          const nextId = Math.max(0, ...mentions.value.map(x => x.mediaMentionId)) + 1;
+          mentions.value.push({ ...form.value, mediaMentionId: nextId });
+        }
+        saveToStorage();
+        showToast(route.value.name === 'edit' ? 'Omtale oppdatert' : 'Omtale lagret');
+        goto('/');
+      } else {
+        try {
+          if (!BACKEND.baseUrl || !BACKEND.apiKey) {
+            showToast('Backend er ikke konfigurert. Slå på testmodus eller fyll inn BACKEND-objektet.', 'error');
+            return;
+          }
+          const payload = {
+            mediaMentionId: route.value.name === 'edit' ? route.value.params.id : 0,
+            authorPersonId: form.value.authorPersonId,
+            publicationDate: form.value.publicationDate,
+            title: form.value.title, content: form.value.content,
+            category: form.value.category, source: form.value.source,
+            url: form.value.url, comment: form.value.comment,
+            memberIds: form.value.members.map(m => m.memberId),
+          };
+          const url = `${BACKEND.baseUrl}?action=safeParse&includeId=${BACKEND.saveIncludeId}`;
+          const resp = await fetch(url, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json', 'X-CRMSCRIPT-KEY': BACKEND.apiKey },
+            body: JSON.stringify(payload),
+          });
+          if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+          showToast('Lagret til SuperOffice');
+          goto('/'); initData();
+        } catch (e) {
+          showToast('Feil ved lagring: ' + e.message, 'error');
+        }
+      }
+    };
+
+    const confirmDelete = () => {
+      if (!confirm('Slette denne omtalen? Dette kan ikke angres.')) return;
+      if (testMode.value) {
+        const id = route.value.params.id;
+        mentions.value = mentions.value.filter(m => m.mediaMentionId !== id);
+        saveToStorage();
+        showToast('Omtale slettet');
+        goto('/');
+      } else {
+        showToast('Slett-endepunkt er ikke implementert ennå', 'error');
+      }
+    };
+
+    /* ---- Pickers ---- */
+    const searchAuthors = () => {
+      const q = authorSearch.value.trim().toLowerCase();
+      if (!q) { authorResults.value = []; return; }
+      if (testMode.value) {
+        authorResults.value = DUMMY_AUTHORS.filter(p =>
+          (p.firstName + ' ' + p.lastName).toLowerCase().includes(q) ||
+          (p.companyName || '').toLowerCase().includes(q)
+        ).slice(0, 8);
+      } else {
+        authorResults.value = [];
+      }
+    };
+    const selectAuthor = (p) => {
+      form.value.authorPersonId = p.personId;
+      form.value.authorFirstName = p.firstName;
+      form.value.authorLastName = p.lastName;
+      form.value.authorCompanyName = p.companyName || '';
+      authorSearch.value = ''; authorResults.value = [];
+    };
+    const clearAuthor = () => {
+      form.value.authorPersonId = null;
+      form.value.authorFirstName = ''; form.value.authorLastName = ''; form.value.authorCompanyName = '';
+    };
+    const searchMembers = () => {
+      const q = memberSearch.value.trim().toLowerCase();
+      if (!q) { memberResults.value = []; return; }
+      if (testMode.value) {
+        memberResults.value = DUMMY_MEMBERS.filter(m =>
+          m.memberName.toLowerCase().includes(q) ||
+          (m.category || '').toLowerCase().includes(q)
+        ).slice(0, 8);
+      } else { memberResults.value = []; }
+    };
+    const isMemberSelected = (id) => form.value.members.some(m => m.memberId === id);
+    const addMember = (m) => {
+      if (isMemberSelected(m.memberId)) return;
+      form.value.members.push({ memberId: m.memberId, memberName: m.memberName });
+      memberSearch.value = ''; memberResults.value = [];
+    };
+    const removeMember = (id) => {
+      form.value.members = form.value.members.filter(m => m.memberId !== id);
+    };
+
+    /* ---- Helpers ---- */
+    const formatDate = (iso) => {
+      if (!iso) return '—';
+      const [y, m, d] = iso.split('-');
+      return `${d}.${m}.${y}`;
+    };
+    const authorName = (m) => `${m.authorFirstName || ''} ${m.authorLastName || ''}`.trim() || '—';
+
+    let toastTimer = null;
+    const showToast = (message, type = 'info') => {
+      toast.value = { message, type };
+      if (toastTimer) clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => { toast.value = null; }, 2800);
+    };
+
+    /* ---- Init ---- */
+    onMounted(() => {
+      initData();
+      // If page loaded directly on /ny or /rediger/:id, hydrate the form
+      if (route.value.name === 'new' || route.value.name === 'edit') {
+        const r = route.value;
+        if (r.name === 'edit') {
+          const m = mentions.value.find(x => x.mediaMentionId === r.params.id);
+          if (m) {
+            form.value = {
+              authorPersonId: m.authorPersonId,
+              authorFirstName: m.authorFirstName, authorLastName: m.authorLastName, authorCompanyName: m.authorCompanyName,
+              publicationDate: m.publicationDate,
+              title: m.title, content: m.content, category: m.category,
+              source: m.source, url: m.url, comment: m.comment,
+              members: m.members.map(x => ({ ...x })),
+            };
+          }
+        } else {
+          const q = r.query || {};
+          if (q.forfatter) {
+            const id = parseInt(q.forfatter);
+            const dummy = DUMMY_AUTHORS.find(a => a.personId === id);
+            if (dummy) {
+              form.value.authorPersonId = dummy.personId;
+              form.value.authorFirstName = dummy.firstName;
+              form.value.authorLastName = dummy.lastName;
+              form.value.authorCompanyName = dummy.companyName || '';
+              if (dummy.companyName) form.value.source = dummy.companyName;
+            }
+          }
+        }
+      }
+    });
+
+    return {
+      route, testMode, mentions, form, filter,
+      authorIndexSearch, customerIndexSearch,
+      authorSearch, authorResults, memberSearch, memberResults,
+      categories, toast,
+      goto, toggleTestMode, resetTestData, clearFilters,
+      filteredMentions, hasActiveFilters, isValid,
+      authorsList, filteredAuthorsList, currentAuthor, currentAuthorMentions, currentAuthorStats,
+      customersList, filteredCustomersList, currentCustomer, currentCustomerMentions, currentCustomerStats,
+      cancelForm, saveForm, confirmDelete, newMentionFromAuthor,
+      searchAuthors, selectAuthor, clearAuthor,
+      searchMembers, isMemberSelected, addMember, removeMember,
+      formatDate, authorName,
+    };
+  }
+}).mount('#app');
+</script>
+</body>
+</html>
